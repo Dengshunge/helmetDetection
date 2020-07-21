@@ -11,8 +11,8 @@ def GT_show():
     需要配置的两个参数是path与save_path,分别表示图片路径与保存路径
     注意,这里的图片与xml文件放在同一个文件夹下.
     '''
-    path = "/home/dengshunge/Desktop/证据检索/数据集/物品检测-手枪与象牙/data/x"
-    save_path = "/home/dengshunge/Desktop/证据检索/数据集/物品检测-手枪与象牙/data/y"
+    path = "/home/data/20"
+    save_path = "/project/train/src_repo/tmp_pic"
     for root, _, files in os.walk(path):
         for file in files:
             if file.endswith('xml'):
@@ -35,17 +35,17 @@ def GT_show():
                 cv2.rectangle(img, (xmin, ymin), (xmax, ymax), (0, 0, 255), 2)
                 cv2.putText(img, name, (xmin, ymin), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
 
-            cv2.imshow("img", img)
-            cv2.waitKey()
-            # cv2.imwrite(os.path.join(save_path, file), img)
+            # cv2.imshow("img", img)
+            # cv2.waitKey()
+            cv2.imwrite(os.path.join(save_path, file), img)
 
 
 def get_height_width():
     '''
     统计原图的GT框的宽度与高度,进行可视化,注意,这里没有进行缩放
     '''
-    path = "/home/dengshunge/Desktop/未命名文件夹"
-    savepath = ""
+    path = "/home/data/20"
+    savepath = "/project/train/src_repo/tmp_pic"
     HW_data = []
     for root, _, files in os.walk(path):
         for file in files:
