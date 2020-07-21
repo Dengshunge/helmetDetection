@@ -18,6 +18,7 @@ def GT_show():
             if file.endswith('xml'):
                 continue
             filename = file.split('.')[0]
+            print(filename)
             img_path = os.path.join(root, file)
             xml_path = os.path.join(root, filename + '.xml')
 
@@ -37,6 +38,8 @@ def GT_show():
 
             # cv2.imshow("img", img)
             # cv2.waitKey()
+            if not os.path.exists(save_path):
+                os.makedirs(save_path)
             cv2.imwrite(os.path.join(save_path, file), img)
 
 
@@ -68,6 +71,8 @@ def get_height_width():
     plt.scatter(HW_data[:, 0], HW_data[:, 1], s=1)
     plt.xlabel("Width")
     plt.ylabel("Height")
+    if not os.path.exists(savepath):
+        os.makedirs(savepath)
     plt.savefig(os.path.join(savepath, "Width_Height.jpg"), dpi=600)
 
 
